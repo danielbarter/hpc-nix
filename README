@@ -1,4 +1,4 @@
-Materials to build a self sufficient nix platform in a hpc environment with NFS filesystem where you don't have root access and user namespaces are not switched on.
+Materials to build a self contained nix store in an environment with NFS filesystem where you don't have root access and user namespaces are not switched on.
 
 1. Set prefix in hpc-nix.nix to the full path of target home directory.
 2. run ./build.sh
