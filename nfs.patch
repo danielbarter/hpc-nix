@@ -1,0 +1,26 @@
+diff --git a/src/libstore/local-store.cc b/src/libstore/local-store.cc
+index f509215..24db010 100644
+--- a/src/libstore/local-store.cc
++++ b/src/libstore/local-store.cc
+@@ -463,7 +463,7 @@ static void canonicalisePathMetaData_(const Path & path, uid_t fromUid, InodesSe
+         for (auto & eaName: tokenizeString<Strings>(std::string(eaBuf.data(), eaSize), std::string("\000", 1))) {
+             /* Ignore SELinux security labels since these cannot be
+                removed even by root. */
+-            if (eaName == "security.selinux") continue;
++            if (eaName == "security.selinux" || eaName = "system.nfs4_acl") continue;
+             if (lremovexattr(path.c_str(), eaName.c_str()) == -1)
+                 throw SysError("removing extended attribute '%s' from '%s'", eaName, path);
+         }
+diff --git a/src/libstore/sqlite.cc b/src/libstore/sqlite.cc
+index a061d64..119c6b0 100644
+--- a/src/libstore/sqlite.cc
++++ b/src/libstore/sqlite.cc
+@@ -28,7 +28,7 @@ namespace nix {
+ SQLite::SQLite(const Path & path)
+ {
+     if (sqlite3_open_v2(path.c_str(), &db,
+-            SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, 0) != SQLITE_OK)
++            SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, "unix-dotfile") != SQLITE_OK)
+         throw Error(format("cannot open SQLite database '%s'") % path);
+ }
+ 
