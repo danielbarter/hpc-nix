@@ -5,4 +5,4 @@ Materials to build a self contained nix store in an environment with NFS filesys
 
 A few more gotchas:
 
-- You will need to set the environment variable NIX_SSL_CERT_FILE on the target server otherwise nix won't be able to fetch things via https
+- You will need to set the environment variable NIX_SSL_CERT_FILE on the target otherwise nix won't be able to fetch things via https
