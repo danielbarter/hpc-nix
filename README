@@ -6,9 +6,10 @@ Instructions:
 
 1. Set prefix in hpc-nix.nix to the full path of target home directory.
 2. run ./build.sh
+3. copy /tmp/copy-me-to-server over the target and move copy-me-to-server/nix to the correct location
 
 Environment variables
 
 - set NIX_SSL_CERT_FILE on the target so nix can fetch things over https
 - set NIX_PATH=nixpkgs=<location of nixpkgs>
-- you may want to set TMPDIR to something other than /tmp (which may be mounted to a small device)
+- If /tmp is mounted to a small device, you may want to set TMPDIR
