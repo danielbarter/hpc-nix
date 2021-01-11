@@ -3,3 +3,6 @@ Materials to build a self contained nix store in an environment with NFS filesys
 1. Set prefix in hpc-nix.nix to the full path of target home directory.
 2. run ./build.sh
 
+A few more gotchas:
+
+- You will need to set the environment variable NIX_SSL_CERT_FILE on the target server otherwise nix won't be able to fetch things via https
