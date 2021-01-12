@@ -1,5 +1,3 @@
-# README
-
 Materials to build a self contained nix store in an environment with network filesystem where you don't have root access and user namespaces are not switched on.
 
 The main downside of this approach (compared to the proot approach) is that you won't be able to utilize exising nix caches, since they assume that the store is located at /nix/store. Everything will be recompiled from scratch.
