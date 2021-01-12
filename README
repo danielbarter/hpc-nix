@@ -7,6 +7,9 @@ Instructions:
 1. Set prefix in hpc-nix.nix to the full path of target home directory.
 2. run ./build.sh
 3. copy /tmp/copy-me-to-server over the target and move copy-me-to-server/nix to the correct location
+4. Add `sandbox = false` and `use-sqlite-wal = false` to ~/.config/nix/nix.conf. The first disables sandbox building which depends on user namespaces. The second is required for sqlite to function correctly on a network filesystem
+
+
 
 Environment variables
 
